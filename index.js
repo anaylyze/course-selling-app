@@ -1,14 +1,15 @@
 const express = require('express');
-const {createUserRoutes} = require('./user');
-const {createCourseRoutes} = require('./courses');
+const {userRouter} = require('./routes/user');
+const {courseRouter} = require('./routes/course');
+const { adminRouter } = require('./routes/admin')
 
 const app = express();
 
-app.use('/user', userRouter); // this lines add /user in all the routes under userRouter
-app.use('/course', courseRouter);
-
-// createUserRoutes(app);
-// createCourseRoutes(app);
+app.use('/api/v1/user', userRouter); // this lines add /user in all the routes under userRouter
+app.use('/api/v1/course', courseRouter); //iska 1 or benefit h ki ye agar route mei koi prefixing 
+// hogi toh woh yahi se ho jayegi or kisi bhi route ko individually change karne ki 
+// zaroorat nhi hai
+app.use('/api/v1/admin', adminRouter)
 
 
 app.listen(3000);

@@ -20,5 +20,5 @@ courseRouter.get('/all' , (req,res) => {
 
 
 module.exports = {
-    CourseRouter: CourseRouter
+    courseRouter: courseRouter
 }
