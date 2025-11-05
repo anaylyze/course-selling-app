@@ -1,5 +1,10 @@
+// importing .env file
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
+
+
 const {userRouter} = require('./routes/user');
 const {courseRouter} = require('./routes/course');
 const { adminRouter } = require('./routes/admin')
@@ -12,10 +17,21 @@ app.use('/api/v1/course', courseRouter); //iska 1 or benefit h ki ye agar route 
 // zaroorat nhi hai
 app.use('/api/v1/admin', adminRouter)
 
+const MONGODB_URL = process.env.MONGODB_URL;
+const PORT = process.env.PORT;
+
 async function main() {
-    await mongoose.connect("mongodb+srv://anayjha2015_db_user:UC6FfxewM8CqKZBo@cluster0.qehio9x.mongodb.net/course-selling-app")
-    app.listen(3000);
-    console.log('hello');
+    try{
+        await mongoose.connect(MONGODB_URL);
+        console.log('database is connected');
+        app.listen(PORT, ()=>{
+            console.log(`server is running on port ${PORT}`);
+            
+        })
+    }
+    catch (error){
+        console.log('failed to connect to the database');
+    }
 }
 
 main()
