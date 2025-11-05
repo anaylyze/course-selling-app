@@ -1,9 +1,6 @@
 // Import mongoose to interact with MongoDB
 const mongoose = require("mongoose");
 
-// connecting database
-mongoose.connect("mongodb+srv://anayjha2015_db_user:UC6FfxewM8CqKZBo@cluster0.qehio9x.mongodb.net/course-selling-app")
-
 // Use Schema and ObjectId from mongoose for creating models
 const Schema = mongoose.Schema; // Define Schema for creating new models
 const ObjectId = mongoose.Types.ObjectId; // Use ObjectId type for MongoDB document references
